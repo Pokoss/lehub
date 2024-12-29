@@ -7,8 +7,25 @@ import Footer from './Components/Footer';
 import { Typography } from '@material-tailwind/react';
 import TestimonialCard from './Components/TestimonialCard';
 import AOS from 'aos';
+import { useForm } from '@inertiajs/react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function HomeScreen() {
+
+	const { data, setData, processing, post, reset, errors } = useForm();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        post('/contact-us', {
+            preserveScroll: true, preserveState: true,
+            onSuccess: () => {
+				reset();
+                setData({})
+                toast.success('We have received you request, we shall contact you shortly')
+            }
+        });
+    }
 	
 	useEffect(() => {
 		AOS.init({ duration: 600 })
@@ -65,7 +82,7 @@ function HomeScreen() {
 
 									</p>
 									<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-										<a rel="noopener noreferrer" href="#" className="px-8 py-3 bg-primary text-lg text-white font-semibold rounded ">Get Started</a>
+										<Link rel="noopener noreferrer" href="/contact-us" className="px-8 py-3 bg-primary text-lg text-white font-semibold rounded ">Get Started</Link>
 										<Link rel="noopener noreferrer" href="/aboutus" className="px-8 py-3 bg-primary text-white text-lg font-semibold border rounded ">About Us</Link>
 									</div>
 								</div>
@@ -306,9 +323,9 @@ function HomeScreen() {
 						>
 							<div className="flex flex-wrap" data-aos='zoom-in-left' >
 								<div className="grow-0 shrink-0 basis-auto w-full xl:w-5/12 px-3 lg:px-6 mb-12 xl:mb-0">
-									<form>
+									<form onSubmit={handleSubmit}>
 										<div className="form-group mb-6">
-											<input type="text" className="form-control block
+											<input type="text" value={data.name ?? ''} onChange={e => setData('name', e.target.value)} className="form-control block
               w-full
               px-3
               py-1.5
@@ -325,7 +342,7 @@ function HomeScreen() {
 												placeholder="Name" />
 										</div>
 										<div className="form-group mb-6">
-											<input type="email" className="form-control block
+											<input value={data.email ?? ''} onChange={e => setData('email', e.target.value)} type="email" className="form-control block
               w-full
               px-3
               py-1.5
@@ -340,9 +357,24 @@ function HomeScreen() {
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput8"
 												placeholder="Email address" />
+											<input value={data.phone ?? ''} onChange={e => setData('phone', e.target.value)} type="tel" className="form-control block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput8"
+												placeholder="Phone" />
 										</div>
 										<div className="form-group mb-6">
-											<textarea className="
+											<textarea value={data.details ?? ''} onChange={e => setData('details', e.target.value)} className=" 
               form-control
               block
               w-full
@@ -451,8 +483,7 @@ function HomeScreen() {
 					</div>
 
 				</section>
-
-
+				<ToastContainer/>
 			</div>
 			<Footer />
 		</div>

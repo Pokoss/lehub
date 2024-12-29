@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -69,3 +70,5 @@ Route::get('/contact-us', function () {
 Route::get('/projects', function () {
     return Inertia::render('ProjectsScreen');
 });
+
+Route::post('/contact-us', [ContactController::class, 'send']);

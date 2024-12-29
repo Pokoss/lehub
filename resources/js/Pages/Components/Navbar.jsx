@@ -27,9 +27,7 @@ function Navbar() {
               </svg>
             </a>
 
-            <Link href="/advertise" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-gray-800">
-              Advertise
-            </Link>
+            
             {/* <Link href="/about-us" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-gray-800">
               About us
             </Link> */}
@@ -39,7 +37,7 @@ function Navbar() {
           </div>
 
           <div className='mr-10'>
-            <Link href="/advertise" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-gray-800">
+            <Link href="#" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-gray-800">
               Login
             </Link>
           </div>
@@ -51,7 +49,7 @@ function Navbar() {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 whitespace-nowrap uppercase text-white"
-              href="#pablo"
+              href="/"
             >
               <img src='/images/web/lehub-logo.png' alt='lehub logo' className='h-9 w-17' />
             </a>

@@ -2,8 +2,24 @@ import React from 'react'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import { Textarea,Input } from '@material-tailwind/react'
+import { useForm } from '@inertiajs/react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function GraphicsDesignScreen() {
+  const { data, setData, processing, post, reset, errors } = useForm();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        post('/contact-us', {
+            preserveScroll: true, preserveState: true,
+            onSuccess: () => {
+				reset();
+                setData({})
+                toast.success('We have received you request, we shall contact you shortly')
+            }
+        });
+    }
   return (
     <div>
       <Navbar/>
@@ -18,22 +34,22 @@ function GraphicsDesignScreen() {
               <p className="my-5">
               Whether it’s a business website, an e-commerce platform, or a personal portfolio, we create sites that are visually appealing and fully responsive.
               </p>
-              <form className="self-stretch ng-untouched ng-pristine ng-valid">
+              <form onSubmit={handleSubmit} className="self-stretch ng-untouched ng-pristine ng-valid">
                 <div>
                   <div className='my-2'>
-                    <Input color="green" label='Name' />
+                    <Input color="green" label='Name' value={data.name ?? ''} onChange={e => setData('name', e.target.value)}/>
 
                   </div>
                   <div className='my-2'>
-                    <Input color="green" label='Email' />
+                    <Input color="green" label='Email' value={data.email ?? ''} onChange={e => setData('email', e.target.value)}/>
 
                   </div>
                   <div className='my-2'>
-                    <Input color="green" label='Phone' />
+                    <Input color="green" label='Phone' value={data.phone ?? ''} onChange={e => setData('phone', e.target.value)}/>
 
                   </div>
                   <div className='my-2'>
-                    <Textarea color="green" label="Extra Details" />
+                    <Textarea color="green" label="Extra Details" value={data.details ?? ''} onChange={e => setData('details', e.target.value)}/>
 
                   </div>
                   <button type="submit" className="w-full py-2 font-semibold bg-primary text-white rounded ">Send Request</button>
@@ -43,6 +59,7 @@ function GraphicsDesignScreen() {
             <img src="/images/web/graphics.jpg" alt="" className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500" />
           </div>
         </section>
+        <ToastContainer/>
       <Footer/>
       </div>
   )
