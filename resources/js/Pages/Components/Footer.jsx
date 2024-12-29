@@ -28,12 +28,12 @@ function Footer() {
             <div className="flex">
               <p className="mr-1 text-gray-100">Phone:</p>
               <a
-                href="tel:+256765974111"
+                href="tel:+256752553236"
                 aria-label="Our phone"
                 title="Our phone"
                 className="transition-colors duration-300 text-gray-100 hover:text-deep-purple-800"
               >
-                +256 765 974 111
+                +256 752 553 236
               </a>
             </div>
             <div className="flex">
@@ -57,7 +57,7 @@ function Footer() {
                 title="Our address"
                 className="transition-colors duration-300 text-gray-100 hover:text-deep-purple-800"
               >
-                Kampala, Uganda
+                Kampala, Kavule, Uganda<br/>Mukono, Seeta, Uganda
               </a>
             </div>
           </div>
@@ -67,7 +67,7 @@ function Footer() {
             </span>
             <div className="flex items-center mt-1 space-x-3">
               <a
-                href="/"
+                href="https://x.com/lehub_dev"
                 className="text-gray-50 transition-colors duration-300 hover:text-gray-100"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -75,7 +75,7 @@ function Footer() {
                 </svg>
               </a>
               <a
-                href="/"
+                href="https://www.instagram.com/lehub.dev" target='_blank'
                 className="text-gray-50 transition-colors duration-300 hover:text-gray-100"
               >
                 <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
@@ -84,7 +84,7 @@ function Footer() {
                 </svg>
               </a>
               <a
-                href="/"
+                href="https://www.facebook.com/Lehub.dev"
                 className="text-gray-50 transition-colors duration-300 hover:text-gray-100"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">

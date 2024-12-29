@@ -351,7 +351,7 @@ function AboutUsScreen() {
                                         Phone number
                                     </dt>
                                     <dd className="mt-2 text-base text-gray-500">
-                                        +256 765 974 111
+                                        +256 752 553 236
                                     </dd>
                                 </div>
                             </div>
