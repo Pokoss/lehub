@@ -63,7 +63,7 @@ Route::get('/graphics-design', function () {
     return Inertia::render('GraphicsDesignScreen');
 });
 
-Route::get('/contact-us', function () {
+Route::get('/daniel', function () {
     return Inertia::render('ContactUsScreen');
 });
 
